@@ -3,6 +3,7 @@ package com.cctv.device;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.cctv.activity.CarLoadActivity;
 import com.cctv.activity.PreSetTask;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,8 +82,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"设备装载",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent();
                 //intent.setClass(MainActivity.this, MainActivityList.class);
+                //intent.putExtra("tasknum", "test");
                 intent.putExtra("type", "load");
+
                 intent.setClass(MainActivity.this, PreSetTask.class);
+                //intent.setClass(MainActivity.this, CarLoadActivity.class);
                 startActivity(intent);
             }
         });

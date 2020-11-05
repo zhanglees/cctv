@@ -150,6 +150,10 @@
     <string name="tab_title1">盘存标签</string>
     <string name="tab_title2">存取标签</string>
 
+    <string name="tab_tasknum">任务号</string>
+
+
+
     <string name="connect_rs232">"串口连接"</string>
     <string name="connect">"立即连接"</string>
     <string name="connect_web">"立即同步"</string>
@@ -327,6 +331,8 @@
 
     <string name="refresh">刷新</string>
 
+    <string name="resetData">重置</string>
+
     <string name="select">选择</string>
     <string name="read_tag">读标签</string>
     <string name="write_tag">写标签</string>
@@ -348,6 +354,8 @@
     <string name="start_inventory">开始盘存</string>
     <string name="stop_inventory">结束盘存</string>
 
+
+    <string name="start_save">确定保存</string>
     <string name="measure">测量</string>
 
 

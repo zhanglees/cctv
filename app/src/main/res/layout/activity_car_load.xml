@@ -5,5 +5,151 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.cctv.activity.CarLoadActivity">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_bg"
+        tools:context="com.cctv.activity.CarLoadActivity" >
+
+        <LinearLayout
+            android:id="@+id/car_linearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" >
+            <View
+                android:layout_width="7.5sp"
+                android:layout_height="match_parent"
+                android:background="#0bbbf7"/>
+            <TextView
+                android:id="@+id/tab_taskum"
+                android:layout_width="320sp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18sp"
+                android:layout_marginTop="7.5sp"
+                android:layout_marginBottom="7.5sp"
+                android:layout_weight="1.0"
+                android:gravity="left"
+                android:text="@string/tab_tasknum"
+                android:textColor="#171616"
+                android:singleLine="true"
+                android:padding="2.2sp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tab_showtask"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="7.5sp"
+                android:layout_marginBottom="7.5sp"
+                android:layout_weight="1.0"
+                android:gravity="left"
+                android:text="none1"
+                android:textColor="#131313"
+
+                android:padding="2.2sp"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:paddingTop ="7.5sp"
+                android:paddingBottom ="7.5sp" >
+                <TextView
+                    android:id="@+id/refreshData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7.5sp"
+                    android:paddingLeft ="15.0sp"
+                    android:paddingRight ="15.0sp"
+                    android:background="@drawable/button_selector"
+                    android:text="@string/resetData"
+                    android:gravity="right"
+                    android:textColor="#0BBBF7"
+                    android:textSize="18.0sp"
+                    android:padding="2.2sp"
+                    android:clickable="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/cursorCar"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#BBBBBB"
+            android:layout_below="@id/car_linearLayout" />
+
+        <ImageView
+            android:id="@+id/iv_menuCar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_above="@id/cursorCar"
+            android:scaleType="centerInside"
+            android:src="@drawable/menu_icon"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vPagerCar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#EEEEEE"
+            android:flipInterval="30"
+            android:persistentDrawingCache="animation"
+            android:layout_below="@id/cursorCar" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="13.7sp"
+            android:layout_marginBottom="3.7sp"
+
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent_background">
+            <!-- add by lei.li 2016/11/24 -->
+            <View
+                android:layout_width="7.5sp"
+                android:layout_height="match_parent"
+                android:background="#0bbbf7"/>
+            <!-- add by lei.li 2016/11/24 -->
+            <TextView
+                android:id="@+id/car_dataSubmit"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.0"
+                android:paddingTop="7.5sp"
+                android:paddingBottom="7.5sp"
+                android:layout_marginLeft="37.0sp"
+                android:layout_marginRight="37.0sp"
+                android:layout_marginBottom="7.5sp"
+                android:layout_marginTop="7.5sp"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:background="@drawable/button_background"
+                android:text="@string/start_save"
+                android:textColor="#ff222222"
+                android:textStyle="bold"
+                android:textSize="12.0sp"
+                android:clickable="true" />
+
+
+
+
+
+            <!-- add by lei.li 2016/11/24 -->
+            <View
+                android:layout_width="7.5sp"
+                android:layout_height="match_parent"
+                android:background="#0bbbf7"/>
+            <!-- add by lei.li 2016/11/24 -->
+        </LinearLayout>
+    </RelativeLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

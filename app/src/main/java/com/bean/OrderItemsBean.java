@@ -1,6 +1,8 @@
 package com.bean;
 
-public class OrderItemsBean {
+import java.io.Serializable;
+
+public class OrderItemsBean implements Serializable {
     /**
      *
      */
