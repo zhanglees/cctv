@@ -98,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this,"卸载设备",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this, UnLoding.class);
+                intent.putExtra("type", "unload");
+                intent.setClass(MainActivity.this, PreSetTask.class);
                 startActivity(intent);
             }
         });
@@ -109,7 +110,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(MainActivity.this,"写标签",Toast.LENGTH_LONG).show();
-
+                Intent intent = new Intent();
+               // intent.putExtra("type", "unload");
+                intent.setClass(MainActivity.this, MainActivityList.class);
+                startActivity(intent);
             }
         });
 
@@ -119,7 +123,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(MainActivity.this,"装车详细",Toast.LENGTH_LONG).show();
-
+                Intent intent = new Intent();
+                // intent.putExtra("type", "unload");
+                intent.setClass(MainActivity.this, UnLoding.class);
+                startActivity(intent);
             }
         });
         try {

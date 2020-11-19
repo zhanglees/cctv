@@ -31,6 +31,9 @@ public class CCTVAPI {
             urlConnection.setConnectTimeout(5000);
             urlConnection.setDoOutput(true);
 
+            // 设置发送数据的格式
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+
             OutputStream outputStream = urlConnection.getOutputStream();
             outputStream.write(param.getBytes());
 

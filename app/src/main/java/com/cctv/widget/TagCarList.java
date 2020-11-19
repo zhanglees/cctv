@@ -157,7 +157,11 @@ public class TagCarList extends LinearLayout {
             return;
         }
         mTotalTag++;
-        setMaxMinRSSI(Integer.parseInt(bean.getRssi()));
+        if(bean.getRssi()!=null&&(!bean.getRssi().equals("")))
+        {
+            setMaxMinRSSI(Integer.parseInt(bean.getRssi()));
+        }
+
         for (InventoryBean datum : data) {
             if (bean.getEpc().equals(datum.getEpc())) {
                 datum.addTimes();
@@ -166,6 +170,29 @@ public class TagCarList extends LinearLayout {
             }
         }
         data.add(bean);
+        mRealListAdapter.notifyDataSetChanged();
+    }
+
+    public final void moveData(InventoryBean bean)
+    {
+        if (bean.getEpc() == null) {
+            return;
+        }
+        mTotalTag--;
+        if(bean.getRssi()!=null&&(!bean.getRssi().equals("")))
+        {
+            setMaxMinRSSI(Integer.parseInt(bean.getRssi()));
+        }
+        InventoryBean temData;
+        for (InventoryBean datum : data) {
+            if (bean.getEpc().replaceAll(" ", "").toLowerCase().equals(datum.getEpc())) {
+                datum.addTimes();
+                data.remove(datum);
+                mRealListAdapter.notifyDataSetChanged();
+                return;
+            }
+        }
+
         mRealListAdapter.notifyDataSetChanged();
     }
 

@@ -125,7 +125,7 @@
                     android:background="#0bbbf7"/>
 
                 <TextView
-                    android:id="@+id/car_id_text_item"
+                    android:id="@+id/car_id_text"
                     android:layout_width="37.5sp"
                     android:layout_height="30dp"
                     android:padding="1.5sp"

@@ -87,4 +87,14 @@ public class InventoryBean {
     public void setDate(long date) {
         this.date = date;
     }
+
+    private OrderItemsBean orderitem ;
+
+    public void setOrderitem(OrderItemsBean orderitem) {
+        this.orderitem = orderitem;
+    }
+
+    public OrderItemsBean getOrderitem() {
+        return orderitem;
+    }
 }

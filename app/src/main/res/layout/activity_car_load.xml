@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.cctv.activity.CarLoadActivity">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/gradient_bg"
@@ -59,6 +58,21 @@
                 android:gravity="center_vertical"
                 android:paddingTop ="7.5sp"
                 android:paddingBottom ="7.5sp" >
+
+                <TextView
+                    android:id="@+id/tab_CarNum"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7.5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_marginBottom="7.5sp"
+                    android:layout_weight="1.0"
+                    android:gravity="left"
+
+                    android:text="号车"
+
+                    android:textColor="#131313"
+                    android:textSize="18sp" />
                 <TextView
                     android:id="@+id/refreshData"
                     android:layout_width="wrap_content"
@@ -91,6 +105,7 @@
             android:layout_alignParentRight="true"
             android:layout_above="@id/cursorCar"
             android:scaleType="centerInside"
+            android:visibility="gone"
             android:src="@drawable/menu_icon"/>
 
         <androidx.viewpager.widget.ViewPager

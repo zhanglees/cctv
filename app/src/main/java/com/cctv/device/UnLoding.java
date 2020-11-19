@@ -62,7 +62,7 @@ public class UnLoding extends AppCompatActivity {
 
                     }
 
-                    //txt.setText(_all);
+                   // txt.setText(_all);
                    // adapter = new LoadAdapter(getLayoutInflater(),_items);
                    // adapter._cuttent = getLayoutInflater();
                    // adapter._items = _items;
@@ -71,7 +71,7 @@ public class UnLoding extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                          //  txt.setText(_all);
+                            txt.setText(_all);
                             adapter = new LoadAdapter(UnLoding.this,_items);
                             //adapter._cuttent = getLayoutInflater();
                             //adapter._items = _items;

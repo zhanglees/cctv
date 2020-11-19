@@ -84,7 +84,7 @@
                     android:background="#BBBBBB" />
 
                 <TextView
-                    android:id="@+id/car_order"
+                    android:id="@+id/car_order_item"
                     android:layout_width="238sp"
                     android:layout_height="30dp"
                     android:padding="1.5sp"
@@ -100,7 +100,7 @@
                     android:layout_height="match_parent"
                     android:background="#BBBBBB" />
                 <TextView
-                    android:id="@+id/car_depart"
+                    android:id="@+id/car_depart_item"
                     android:layout_width="52.2sp"
                     android:layout_height="30dp"
                     android:padding="1.5sp"
@@ -116,7 +116,7 @@
                     android:layout_height="match_parent"
                     android:background="#BBBBBB" />
                 <TextView
-                    android:id="@+id/car_device_weight"
+                    android:id="@+id/car_device_weight_item"
                     android:layout_width="52.2sp"
                     android:layout_height="30dp"
                     android:padding="1.5sp"
@@ -132,7 +132,7 @@
                     android:layout_height="match_parent"
                     android:background="#BBBBBB" />
                 <TextView
-                    android:id="@+id/car_device_size"
+                    android:id="@+id/car_device_size_item"
                     android:layout_width="238sp"
                     android:layout_height="30dp"
                     android:padding="1.5sp"

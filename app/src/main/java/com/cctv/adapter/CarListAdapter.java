@@ -8,10 +8,13 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.bean.InventoryBean;
+import com.bean.OrderItemsBean;
 import com.cctv.device.R.id;
 import com.cctv.device.R.layout;
 
 import java.util.List;
+
+import static com.cctv.device.R.id.car_id_text_item;
 
 public class CarListAdapter extends BaseAdapter {
     //add by lei.li 2016/11/10
@@ -30,6 +33,14 @@ public class CarListAdapter extends BaseAdapter {
         public TextView mTimesText;
         public TextView mRssiText;
         public TextView mFreqText;
+
+        public TextView mEpcNewInfo;
+        public TextView mBoxNum;
+        public TextView mWeight;
+        public TextView mSize;
+        public TextView mDepartMent;
+        public TextView mEqumentOrder;
+
     }
 
     public CarListAdapter(Context context, List<InventoryBean> listMap) {
@@ -63,41 +74,47 @@ public class CarListAdapter extends BaseAdapter {
         if (convertView == null) {
             listItemView = new ListItemView();
             convertView = mInflater.inflate(layout.car_tag_list_item, null);
-            listItemView.mIdText = (TextView) convertView.findViewById(id.car_id_text_item);
+            listItemView.mIdText = (TextView) convertView.findViewById(car_id_text_item);
             listItemView.mEpcText = (TextView) convertView.findViewById(id.car_epc_text_item);
 
-            //add by lei.li 2016/11/11
-			/*if (!listMap.isEmpty()) {
-			    listItemView.mEpcText.getLayoutParams().width = lengthestData();
-			    mWidthest = listItemView.mEpcText.getLayoutParams().width;
-			}*/
-            //add by lei.li 2016/11/11
-
-            //add by lei.li 2016/11/14
-            //add by lei.li 2016/11/14
 
 
             listItemView.mPcText = (TextView) convertView.findViewById(id.car_pc_text_item);
             listItemView.mTimesText = (TextView) convertView.findViewById(id.car_times_text_item);
             listItemView.mRssiText = (TextView) convertView.findViewById(id.car_rssi_text_item);
             listItemView.mFreqText = (TextView) convertView.findViewById(id.car_freq_text_item);
+
+
+            listItemView.mEpcNewInfo = (TextView)convertView.findViewById(id.car_epc_num_item) ;
+            listItemView.mBoxNum =(TextView)convertView.findViewById(id.car_pc_box_item) ;
+            listItemView.mWeight = (TextView)convertView.findViewById(id.car_device_weight_item);
+            listItemView.mSize =(TextView)convertView.findViewById(id.car_device_size_item);
+            listItemView.mDepartMent = (TextView)convertView.findViewById(id.car_depart_item);
+            listItemView.mEqumentOrder = (TextView)convertView.findViewById(id.car_order_item);
             convertView.setTag(listItemView);
         } else {
             listItemView = (ListItemView) convertView.getTag();
-            //add by lei.li 2016/11/11
-			/*if (!listMap.isEmpty())
-			    listItemView.mEpcText.getLayoutParams().width = lengthestData();*/
-            //add by lei.li 2016/11/11
         }
 
         //add by lei.li 2016/
-
         InventoryBean bean = listMap.get(position);
 
         listItemView.mIdText.setText(String.valueOf(position + 1));
         listItemView.mEpcText.setText(bean.getEpc());
         listItemView.mPcText.setText(bean.getPc());
         listItemView.mTimesText.setText(String.valueOf(bean.getTimes()));
+
+        if(bean.getOrderitem()!=null)
+        {
+            OrderItemsBean dataBean = bean.getOrderitem();
+            listItemView.mEpcNewInfo.setText(dataBean.getEpcname());
+            listItemView.mBoxNum.setText(String.valueOf(dataBean.getBoxnum()));
+            listItemView.mWeight.setText(String.valueOf(dataBean.getWeight()));
+            listItemView.mSize.setText(dataBean.getSize());
+            listItemView.mDepartMent.setText(dataBean.getDepartname());
+            listItemView.mEqumentOrder.setText(dataBean.getTransportnum());
+        }
+
         try {
             listItemView.mRssiText.setText((Integer.parseInt(bean.getRssi()) - 129) + "dBm");
         } catch (Exception e) {

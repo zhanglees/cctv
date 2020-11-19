@@ -289,16 +289,12 @@ public class PageInventoryReal extends LinearLayout {
             mLoopHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    Log.i("epc",bean.getEpc()+" "+String.valueOf(bean.getEpc()=="E2 00 00 1D 46 0A 01 64 16 90 8A 2E")+String.valueOf(bean.getEpc().equals("E2 00 00 1D 46 0A 01 64 16 90 8A 2E")));
-                    if(bean.getEpc().equals("E2 00 00 1D 46 0A 01 64 16 90 8A 2E")||bean.getEpc().equals("30 08 33 B2 DD D9 01 40 00 00 00 00")||bean.getEpc()=="30 08 33 B2 DD D9 01 40 20 18 06 15")
-                    {
 
                         mTagRealList.addData(bean);
                         mTagsCountText.setText(String.valueOf(mTagRealList.getCountTag()));
                         mTagsTotalText.setText(String.valueOf(mTagRealList.getTotalTag()));
                         mApp.addTag(bean.getEpc());
                         BeeperUtils.beep(BeeperUtils.BEEPER_SHORT);
-                    }
 
                 }
             });

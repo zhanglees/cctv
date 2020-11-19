@@ -36,7 +36,7 @@ public class UHFApplication extends Application {
     public ArrayList<CharSequence> mMonitorListItem = new ArrayList<CharSequence>();
 
     private List<String> mTags = new ArrayList<>();
-
+    private List<String> mUnloadTags = new ArrayList<>();
     public final void writeMonitor(String strLog, int type) {
         Date now = new Date();
         SimpleDateFormat temp = new SimpleDateFormat("kk:mm:ss:SSS");
@@ -62,12 +62,26 @@ public class UHFApplication extends Application {
         }
     }
 
+    public void addUnlodTag(String tag) {
+        if (!mUnloadTags.contains(tag)) {
+            mUnloadTags.add(tag);
+        }
+    }
+
+    public List<String> getUnloadTags() {
+        return mUnloadTags;
+    }
+
     public List<String> getTags() {
         return mTags;
     }
 
     public void clearTags() {
         mTags.clear();
+    }
+
+    public void clearUnloadTags() {
+        mUnloadTags.clear();
     }
 
     @Override
