@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CCTVDeviceUHFModelStoreContainer" CdmEntityContainer="CCTVDeviceUHFEntities">
+    <EntitySetMapping Name="CarInfo">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.CarInfo">
+        <MappingFragment StoreEntitySet="CarInfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CarNum" ColumnName="CarNum" />
+          <ScalarProperty Name="NumberInfo" ColumnName="NumberInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceInfo">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.DeviceInfo">
+        <MappingFragment StoreEntitySet="DeviceInfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="DeviceModel" ColumnName="DeviceModel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DriverInfo">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.DriverInfo">
+        <MappingFragment StoreEntitySet="DriverInfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentOrder">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.EquipmentOrder">
+        <MappingFragment StoreEntitySet="EquipmentOrder">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="TransportNum" ColumnName="TransportNum" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="DepartMentId" ColumnName="DepartMentId" />
+          <ScalarProperty Name="DepartName" ColumnName="DepartName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentOrderItem">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.EquipmentOrderItem">
+        <MappingFragment StoreEntitySet="EquipmentOrderItem">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="EquipmentOrderId" ColumnName="EquipmentOrderId" />
+          <ScalarProperty Name="BoxNum" ColumnName="BoxNum" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentOrderItemDevices">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.EquipmentOrderItemDevices">
+        <MappingFragment StoreEntitySet="EquipmentOrderItemDevices">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="EquipmentOrderItemId" ColumnName="EquipmentOrderItemId" />
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RFID">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.RFID">
+        <MappingFragment StoreEntitySet="RFID">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="EPCNum" ColumnName="EPCNum" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="EPCName" ColumnName="EPCName" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RFIDBoard">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.RFIDBoard">
+        <MappingFragment StoreEntitySet="RFIDBoard">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="RFIDIDFather" ColumnName="RFIDIDFather" />
+          <ScalarProperty Name="RFIDIDChild" ColumnName="RFIDIDChild" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Task">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskNum" ColumnName="TaskNum" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderInfo">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.orderInfo">
+        <MappingFragment StoreEntitySet="orderInfo">
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskNum" ColumnName="TaskNum" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="TransportNum" ColumnName="TransportNum" />
+          <ScalarProperty Name="BoxNum" ColumnName="BoxNum" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="EPCNum" ColumnName="EPCNum" />
+          <ScalarProperty Name="EPCName" ColumnName="EPCName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderItems">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.orderItems">
+        <MappingFragment StoreEntitySet="orderItems">
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskNum" ColumnName="TaskNum" />
+          <ScalarProperty Name="taskId" ColumnName="taskId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="TransportNum" ColumnName="TransportNum" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="DepartName" ColumnName="DepartName" />
+          <ScalarProperty Name="orderItemId" ColumnName="orderItemId" />
+          <ScalarProperty Name="EquipmentOrderId" ColumnName="EquipmentOrderId" />
+          <ScalarProperty Name="BoxNum" ColumnName="BoxNum" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="boxContentId" ColumnName="boxContentId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="deviceNumbers" ColumnName="deviceNumbers" />
+          <ScalarProperty Name="RFIDID" ColumnName="RFIDID" />
+          <ScalarProperty Name="EPCNum" ColumnName="EPCNum" />
+          <ScalarProperty Name="EPCName" ColumnName="EPCName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CarInfoEquipmentOrderItem" TypeName="CCTVDeviceUHFModel.CarInfoEquipmentOrderItem" StoreEntitySet="CarInfoEquipmentOrderItem">
+      <EndProperty Name="CarInfo">
+        <ScalarProperty Name="id" ColumnName="CarInfoID" />
+      </EndProperty>
+      <EndProperty Name="EquipmentOrderItem">
+        <ScalarProperty Name="id" ColumnName="EquipmentOrderItem" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CarInfoIdDriversId" TypeName="CCTVDeviceUHFModel.CarInfoIdDriversId" StoreEntitySet="CarInfoIdDriversId">
+      <EndProperty Name="CarInfo">
+        <ScalarProperty Name="id" ColumnName="CarInfoId" />
+      </EndProperty>
+      <EndProperty Name="DriverInfo">
+        <ScalarProperty Name="id" ColumnName="DriversId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RFIDEquipmentOrderItem" TypeName="CCTVDeviceUHFModel.RFIDEquipmentOrderItem" StoreEntitySet="RFIDEquipmentOrderItem">
+      <EndProperty Name="EquipmentOrderItem">
+        <ScalarProperty Name="id" ColumnName="EquipmentOrderItemId" />
+      </EndProperty>
+      <EndProperty Name="RFID">
+        <ScalarProperty Name="id" ColumnName="RFITId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="HistoryCarLoad">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.HistoryCarLoad">
+        <MappingFragment StoreEntitySet="HistoryCarLoad">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="EquipmentOrderItemId" ColumnName="EquipmentOrderItemId" />
+          <ScalarProperty Name="CarInfoId" ColumnName="CarInfoId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderItemsByCar">
+      <EntityTypeMapping TypeName="CCTVDeviceUHFModel.orderItemsByCar">
+        <MappingFragment StoreEntitySet="orderItemsByCar">
+          <ScalarProperty Name="NumberInfo" ColumnName="NumberInfo" />
+          <ScalarProperty Name="CarNum" ColumnName="CarNum" />
+          <ScalarProperty Name="carId" ColumnName="carId" />
+          <ScalarProperty Name="EPCName" ColumnName="EPCName" />
+          <ScalarProperty Name="EPCNum" ColumnName="EPCNum" />
+          <ScalarProperty Name="RFIDID" ColumnName="RFIDID" />
+          <ScalarProperty Name="deviceNumbers" ColumnName="deviceNumbers" />
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="boxContentId" ColumnName="boxContentId" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="BoxNum" ColumnName="BoxNum" />
+          <ScalarProperty Name="EquipmentOrderId" ColumnName="EquipmentOrderId" />
+          <ScalarProperty Name="orderItemId" ColumnName="orderItemId" />
+          <ScalarProperty Name="DepartName" ColumnName="DepartName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="TransportNum" ColumnName="TransportNum" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="taskId" ColumnName="taskId" />
+          <ScalarProperty Name="TaskNum" ColumnName="TaskNum" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

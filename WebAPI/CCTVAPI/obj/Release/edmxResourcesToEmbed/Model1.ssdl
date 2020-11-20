@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CCTVDeviceUHFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CarInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CarNum" Type="varchar" MaxLength="50" />
+    <Property Name="NumberInfo" Type="int" />
+  </EntityType>
+  <EntityType Name="CarInfoEquipmentOrderItem">
+    <Key>
+      <PropertyRef Name="CarInfoID" />
+      <PropertyRef Name="EquipmentOrderItem" />
+    </Key>
+    <Property Name="CarInfoID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EquipmentOrderItem" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarInfoIdDriversId">
+    <Key>
+      <PropertyRef Name="CarInfoId" />
+      <PropertyRef Name="DriversId" />
+    </Key>
+    <Property Name="CarInfoId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DriversId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeviceInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DeviceName" Type="nvarchar" MaxLength="150" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Size" Type="varchar" MaxLength="50" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Country" Type="int" />
+    <Property Name="DeviceModel" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="DriverInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DriverName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="EquipmentOrder">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TaskId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TransportNum" Type="varchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="DepartMentId" Type="uniqueidentifier" />
+    <Property Name="DepartName" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="EquipmentOrderItem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EquipmentOrderId" Type="uniqueidentifier" />
+    <Property Name="BoxNum" Type="int" />
+    <Property Name="Size" Type="varchar" MaxLength="50" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="EquipmentOrderItemDevices">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DeviceId" Type="uniqueidentifier" />
+    <Property Name="EquipmentOrderItemId" Type="uniqueidentifier" />
+    <Property Name="DeviceName" Type="nvarchar" MaxLength="150" />
+    <Property Name="Number" Type="int" />
+  </EntityType>
+  <EntityType Name="HistoryCarLoad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarInfoId" Type="uniqueidentifier" />
+    <Property Name="EquipmentOrderItemId" Type="uniqueidentifier" />
+    <Property Name="type" Type="int" />
+  </EntityType>
+  <EntityType Name="RFID">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EPCNum" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EPCName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DepartmentId" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <EntityType Name="RFIDBoard">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TaskId" Type="uniqueidentifier" />
+    <Property Name="RFIDIDFather" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RFIDIDChild" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RFIDEquipmentOrderItem">
+    <Key>
+      <PropertyRef Name="EquipmentOrderItemId" />
+      <PropertyRef Name="RFITId" />
+    </Key>
+    <Property Name="EquipmentOrderItemId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RFITId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TaskName" Type="varchar" MaxLength="300" />
+    <Property Name="TaskNum" Type="varchar" MaxLength="300" />
+    <Property Name="State" Type="int" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“CCTVDeviceUHF.dbo.orderInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="orderInfo">
+    <Key>
+      <PropertyRef Name="EPCNum" />
+    </Key>
+    <Property Name="TaskName" Type="varchar" MaxLength="300" />
+    <Property Name="TaskNum" Type="varchar" MaxLength="300" />
+    <Property Name="State" Type="int" />
+    <Property Name="TransportNum" Type="varchar" MaxLength="50" />
+    <Property Name="BoxNum" Type="int" />
+    <Property Name="Size" Type="varchar" MaxLength="50" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DeviceName" Type="nvarchar" MaxLength="150" />
+    <Property Name="Number" Type="int" />
+    <Property Name="EPCNum" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EPCName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“CCTVDeviceUHF.dbo.orderItems”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="orderItems">
+    <Key>
+      <PropertyRef Name="taskId" />
+      <PropertyRef Name="orderId" />
+      <PropertyRef Name="orderItemId" />
+      <PropertyRef Name="boxContentId" />
+      <PropertyRef Name="RFIDID" />
+      <PropertyRef Name="EPCNum" />
+    </Key>
+    <Property Name="TaskName" Type="varchar" MaxLength="300" />
+    <Property Name="TaskNum" Type="varchar" MaxLength="300" />
+    <Property Name="taskId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="State" Type="int" />
+    <Property Name="orderId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TransportNum" Type="varchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="DepartName" Type="varchar" MaxLength="150" />
+    <Property Name="orderItemId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EquipmentOrderId" Type="uniqueidentifier" />
+    <Property Name="BoxNum" Type="int" />
+    <Property Name="Size" Type="varchar" MaxLength="50" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="boxContentId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DeviceId" Type="uniqueidentifier" />
+    <Property Name="DeviceName" Type="nvarchar" MaxLength="150" />
+    <Property Name="deviceNumbers" Type="int" />
+    <Property Name="RFIDID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EPCNum" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EPCName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“CCTVDeviceUHF.dbo.orderItemsByCar”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="orderItemsByCar">
+    <Key>
+      <PropertyRef Name="taskId" />
+      <PropertyRef Name="orderId" />
+      <PropertyRef Name="orderItemId" />
+      <PropertyRef Name="boxContentId" />
+      <PropertyRef Name="RFIDID" />
+      <PropertyRef Name="EPCNum" />
+      <PropertyRef Name="carId" />
+    </Key>
+    <Property Name="TaskName" Type="varchar" MaxLength="300" />
+    <Property Name="TaskNum" Type="varchar" MaxLength="300" />
+    <Property Name="taskId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="State" Type="int" />
+    <Property Name="orderId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TransportNum" Type="varchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="DepartName" Type="varchar" MaxLength="150" />
+    <Property Name="orderItemId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EquipmentOrderId" Type="uniqueidentifier" />
+    <Property Name="BoxNum" Type="int" />
+    <Property Name="Size" Type="varchar" MaxLength="50" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="boxContentId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DeviceId" Type="uniqueidentifier" />
+    <Property Name="DeviceName" Type="nvarchar" MaxLength="150" />
+    <Property Name="deviceNumbers" Type="int" />
+    <Property Name="RFIDID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EPCNum" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EPCName" Type="nvarchar" MaxLength="50" />
+    <Property Name="carId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CarNum" Type="varchar" MaxLength="50" />
+    <Property Name="NumberInfo" Type="int" />
+  </EntityType>
+  <Association Name="FK_CarInfoEquipmentOrderItem_CarInfo">
+    <End Role="CarInfo" Type="Self.CarInfo" Multiplicity="1" />
+    <End Role="CarInfoEquipmentOrderItem" Type="Self.CarInfoEquipmentOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarInfo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CarInfoEquipmentOrderItem">
+        <PropertyRef Name="CarInfoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarInfoEquipmentOrderItem_EquipmentOrderItem">
+    <End Role="EquipmentOrderItem" Type="Self.EquipmentOrderItem" Multiplicity="1" />
+    <End Role="CarInfoEquipmentOrderItem" Type="Self.CarInfoEquipmentOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentOrderItem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CarInfoEquipmentOrderItem">
+        <PropertyRef Name="EquipmentOrderItem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarInfoIdDriversId_CarInfo">
+    <End Role="CarInfo" Type="Self.CarInfo" Multiplicity="1" />
+    <End Role="CarInfoIdDriversId" Type="Self.CarInfoIdDriversId" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarInfo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CarInfoIdDriversId">
+        <PropertyRef Name="CarInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarInfoIdDriversId_DriverInfo">
+    <End Role="DriverInfo" Type="Self.DriverInfo" Multiplicity="1" />
+    <End Role="CarInfoIdDriversId" Type="Self.CarInfoIdDriversId" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DriverInfo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CarInfoIdDriversId">
+        <PropertyRef Name="DriversId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentOrder_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="EquipmentOrder" Type="Self.EquipmentOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EquipmentOrder">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentOrderItem_EquipmentOrder">
+    <End Role="EquipmentOrder" Type="Self.EquipmentOrder" Multiplicity="0..1" />
+    <End Role="EquipmentOrderItem" Type="Self.EquipmentOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentOrder">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EquipmentOrderItem">
+        <PropertyRef Name="EquipmentOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentOrderItemDevices_DeviceInfo">
+    <End Role="DeviceInfo" Type="Self.DeviceInfo" Multiplicity="0..1" />
+    <End Role="EquipmentOrderItemDevices" Type="Self.EquipmentOrderItemDevices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceInfo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EquipmentOrderItemDevices">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentOrderItemDevices_EquipmentOrderItem">
+    <End Role="EquipmentOrderItem" Type="Self.EquipmentOrderItem" Multiplicity="0..1" />
+    <End Role="EquipmentOrderItemDevices" Type="Self.EquipmentOrderItemDevices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentOrderItem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EquipmentOrderItemDevices">
+        <PropertyRef Name="EquipmentOrderItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RFIDEquipmentOrderItem_EquipmentOrderItem">
+    <End Role="EquipmentOrderItem" Type="Self.EquipmentOrderItem" Multiplicity="1" />
+    <End Role="RFIDEquipmentOrderItem" Type="Self.RFIDEquipmentOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentOrderItem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="RFIDEquipmentOrderItem">
+        <PropertyRef Name="EquipmentOrderItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RFIDEquipmentOrderItem_RFID">
+    <End Role="RFID" Type="Self.RFID" Multiplicity="1" />
+    <End Role="RFIDEquipmentOrderItem" Type="Self.RFIDEquipmentOrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RFID">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="RFIDEquipmentOrderItem">
+        <PropertyRef Name="RFITId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CCTVDeviceUHFModelStoreContainer">
+    <EntitySet Name="CarInfo" EntityType="Self.CarInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CarInfoEquipmentOrderItem" EntityType="Self.CarInfoEquipmentOrderItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CarInfoIdDriversId" EntityType="Self.CarInfoIdDriversId" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeviceInfo" EntityType="Self.DeviceInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DriverInfo" EntityType="Self.DriverInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentOrder" EntityType="Self.EquipmentOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentOrderItem" EntityType="Self.EquipmentOrderItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentOrderItemDevices" EntityType="Self.EquipmentOrderItemDevices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistoryCarLoad" EntityType="Self.HistoryCarLoad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RFID" EntityType="Self.RFID" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RFIDBoard" EntityType="Self.RFIDBoard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RFIDEquipmentOrderItem" EntityType="Self.RFIDEquipmentOrderItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orderInfo" EntityType="Self.orderInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[orderInfo].[TaskName] AS [TaskName], 
+[orderInfo].[TaskNum] AS [TaskNum], 
+[orderInfo].[State] AS [State], 
+[orderInfo].[TransportNum] AS [TransportNum], 
+[orderInfo].[BoxNum] AS [BoxNum], 
+[orderInfo].[Size] AS [Size], 
+[orderInfo].[Weight] AS [Weight], 
+[orderInfo].[DeviceName] AS [DeviceName], 
+[orderInfo].[Number] AS [Number], 
+[orderInfo].[EPCNum] AS [EPCNum], 
+[orderInfo].[EPCName] AS [EPCName]
+FROM [dbo].[orderInfo] AS [orderInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="orderItems" EntityType="Self.orderItems" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[orderItems].[TaskName] AS [TaskName], 
+[orderItems].[TaskNum] AS [TaskNum], 
+[orderItems].[taskId] AS [taskId], 
+[orderItems].[State] AS [State], 
+[orderItems].[orderId] AS [orderId], 
+[orderItems].[TransportNum] AS [TransportNum], 
+[orderItems].[CreateTime] AS [CreateTime], 
+[orderItems].[DepartName] AS [DepartName], 
+[orderItems].[orderItemId] AS [orderItemId], 
+[orderItems].[EquipmentOrderId] AS [EquipmentOrderId], 
+[orderItems].[BoxNum] AS [BoxNum], 
+[orderItems].[Size] AS [Size], 
+[orderItems].[Weight] AS [Weight], 
+[orderItems].[boxContentId] AS [boxContentId], 
+[orderItems].[DeviceId] AS [DeviceId], 
+[orderItems].[DeviceName] AS [DeviceName], 
+[orderItems].[deviceNumbers] AS [deviceNumbers], 
+[orderItems].[RFIDID] AS [RFIDID], 
+[orderItems].[EPCNum] AS [EPCNum], 
+[orderItems].[EPCName] AS [EPCName]
+FROM [dbo].[orderItems] AS [orderItems]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="orderItemsByCar" EntityType="Self.orderItemsByCar" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[orderItemsByCar].[TaskName] AS [TaskName], 
+[orderItemsByCar].[TaskNum] AS [TaskNum], 
+[orderItemsByCar].[taskId] AS [taskId], 
+[orderItemsByCar].[State] AS [State], 
+[orderItemsByCar].[orderId] AS [orderId], 
+[orderItemsByCar].[TransportNum] AS [TransportNum], 
+[orderItemsByCar].[CreateTime] AS [CreateTime], 
+[orderItemsByCar].[DepartName] AS [DepartName], 
+[orderItemsByCar].[orderItemId] AS [orderItemId], 
+[orderItemsByCar].[EquipmentOrderId] AS [EquipmentOrderId], 
+[orderItemsByCar].[BoxNum] AS [BoxNum], 
+[orderItemsByCar].[Size] AS [Size], 
+[orderItemsByCar].[Weight] AS [Weight], 
+[orderItemsByCar].[boxContentId] AS [boxContentId], 
+[orderItemsByCar].[DeviceId] AS [DeviceId], 
+[orderItemsByCar].[DeviceName] AS [DeviceName], 
+[orderItemsByCar].[deviceNumbers] AS [deviceNumbers], 
+[orderItemsByCar].[RFIDID] AS [RFIDID], 
+[orderItemsByCar].[EPCNum] AS [EPCNum], 
+[orderItemsByCar].[EPCName] AS [EPCName], 
+[orderItemsByCar].[carId] AS [carId], 
+[orderItemsByCar].[CarNum] AS [CarNum], 
+[orderItemsByCar].[NumberInfo] AS [NumberInfo]
+FROM [dbo].[orderItemsByCar] AS [orderItemsByCar]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CarInfoEquipmentOrderItem_CarInfo" Association="Self.FK_CarInfoEquipmentOrderItem_CarInfo">
+      <End Role="CarInfo" EntitySet="CarInfo" />
+      <End Role="CarInfoEquipmentOrderItem" EntitySet="CarInfoEquipmentOrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarInfoEquipmentOrderItem_EquipmentOrderItem" Association="Self.FK_CarInfoEquipmentOrderItem_EquipmentOrderItem">
+      <End Role="EquipmentOrderItem" EntitySet="EquipmentOrderItem" />
+      <End Role="CarInfoEquipmentOrderItem" EntitySet="CarInfoEquipmentOrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarInfoIdDriversId_CarInfo" Association="Self.FK_CarInfoIdDriversId_CarInfo">
+      <End Role="CarInfo" EntitySet="CarInfo" />
+      <End Role="CarInfoIdDriversId" EntitySet="CarInfoIdDriversId" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarInfoIdDriversId_DriverInfo" Association="Self.FK_CarInfoIdDriversId_DriverInfo">
+      <End Role="DriverInfo" EntitySet="DriverInfo" />
+      <End Role="CarInfoIdDriversId" EntitySet="CarInfoIdDriversId" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentOrder_Task" Association="Self.FK_EquipmentOrder_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="EquipmentOrder" EntitySet="EquipmentOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentOrderItem_EquipmentOrder" Association="Self.FK_EquipmentOrderItem_EquipmentOrder">
+      <End Role="EquipmentOrder" EntitySet="EquipmentOrder" />
+      <End Role="EquipmentOrderItem" EntitySet="EquipmentOrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentOrderItemDevices_DeviceInfo" Association="Self.FK_EquipmentOrderItemDevices_DeviceInfo">
+      <End Role="DeviceInfo" EntitySet="DeviceInfo" />
+      <End Role="EquipmentOrderItemDevices" EntitySet="EquipmentOrderItemDevices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentOrderItemDevices_EquipmentOrderItem" Association="Self.FK_EquipmentOrderItemDevices_EquipmentOrderItem">
+      <End Role="EquipmentOrderItem" EntitySet="EquipmentOrderItem" />
+      <End Role="EquipmentOrderItemDevices" EntitySet="EquipmentOrderItemDevices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RFIDEquipmentOrderItem_EquipmentOrderItem" Association="Self.FK_RFIDEquipmentOrderItem_EquipmentOrderItem">
+      <End Role="EquipmentOrderItem" EntitySet="EquipmentOrderItem" />
+      <End Role="RFIDEquipmentOrderItem" EntitySet="RFIDEquipmentOrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RFIDEquipmentOrderItem_RFID" Association="Self.FK_RFIDEquipmentOrderItem_RFID">
+      <End Role="RFID" EntitySet="RFID" />
+      <End Role="RFIDEquipmentOrderItem" EntitySet="RFIDEquipmentOrderItem" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
