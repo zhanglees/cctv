@@ -197,7 +197,9 @@ public class TagCarList extends LinearLayout {
     }
 
     public List<InventoryBean> getData(){
-        return data;
+       // return data;
+
+        return  this.mRealListAdapter.GetCurrentData();
     }
 
     public int getTotalTag() {

@@ -1,16 +1,21 @@
 package com.cctv.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bean.InventoryBean;
 import com.bean.OrderItemsBean;
+import com.cctv.UHFApplication;
+import com.cctv.activity.CarLoadActivity;
 import com.cctv.device.R.id;
 import com.cctv.device.R.layout;
+import com.cctv.widget.TagCarList;
 
 import java.util.List;
 
@@ -25,6 +30,8 @@ public class CarListAdapter extends BaseAdapter {
     private Context mContext;
 
     private List<InventoryBean> listMap;
+
+    private UHFApplication mApp;
 
     public final class ListItemView {
         public TextView mIdText;
@@ -41,12 +48,20 @@ public class CarListAdapter extends BaseAdapter {
         public TextView mDepartMent;
         public TextView mEqumentOrder;
 
+        public ImageView mMoveBtn;
     }
+
+    private  InventoryBean mMoveben;
+
+
+    private View.OnClickListener mOnClickListener;
 
     public CarListAdapter(Context context, List<InventoryBean> listMap) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.listMap = listMap;
+
+        mApp = (UHFApplication) ((Activity) context).getApplication();
     }
 
     @Override
@@ -67,8 +82,23 @@ public class CarListAdapter extends BaseAdapter {
         return position;
     }
 
+    //自定义一个回调接口来实现Click和LongClick事件
+    public interface OnItemClickListener  {
+        void onItemClick(View v, int position);
+        void onItemLongClick(View v);
+    }
+    private OnItemClickListener mOnItemClickListener;//声明自定义的接口
+
+    //定义方法并暴露给外面的调用者
+    public void setOnItemClickListener(OnItemClickListener  listener) {
+        this.mOnItemClickListener  = listener;
+    }
+
+
+
+
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         ListItemView listItemView = null;
         if (convertView == null) {
@@ -91,13 +121,16 @@ public class CarListAdapter extends BaseAdapter {
             listItemView.mSize =(TextView)convertView.findViewById(id.car_device_size_item);
             listItemView.mDepartMent = (TextView)convertView.findViewById(id.car_depart_item);
             listItemView.mEqumentOrder = (TextView)convertView.findViewById(id.car_order_item);
+
+            listItemView.mMoveBtn = (ImageView)convertView.findViewById(id.image_unload);
+            listItemView.mMoveBtn.setOnClickListener(mOnClickListener);
             convertView.setTag(listItemView);
         } else {
             listItemView = (ListItemView) convertView.getTag();
         }
 
         //add by lei.li 2016/
-        InventoryBean bean = listMap.get(position);
+        final InventoryBean bean = listMap.get(position);
 
         listItemView.mIdText.setText(String.valueOf(position + 1));
         listItemView.mEpcText.setText(bean.getEpc());
@@ -113,6 +146,15 @@ public class CarListAdapter extends BaseAdapter {
             listItemView.mSize.setText(dataBean.getSize());
             listItemView.mDepartMent.setText(dataBean.getDepartname());
             listItemView.mEqumentOrder.setText(dataBean.getTransportnum());
+
+            mMoveben = bean;
+            listItemView.mMoveBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //removeBen(mMoveben);
+                    removeData(position,bean);
+                }
+            });
         }
 
         try {
@@ -136,6 +178,25 @@ public class CarListAdapter extends BaseAdapter {
                 length = itm.getEpc().length();
         }
         return length * 16;
+    }
+
+    public void removeBen(InventoryBean bean)
+    {
+       // ((TagCarList) mContext).mInventoryList = mTagRealList.getData();
+        //((CarLoadActivity) mContext)
+    }
+
+    public void removeData(int position,InventoryBean argBean) {
+        listMap.remove(position);
+        //删除动画
+       // notifyItemRemoved(position);
+        mApp.addUnlodTag(argBean.getOrderitem().getOrderitemid());
+        notifyDataSetChanged();
+    }
+
+    public List<InventoryBean> GetCurrentData()
+    {
+        return  listMap;
     }
 
 

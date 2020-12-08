@@ -232,6 +232,20 @@
                     android:layout_width="3.7dp"
                     android:layout_height="match_parent"
                     android:background="#BBBBBB" />
+                <ImageView
+                    android:id="@+id/image_unload"
+                    android:layout_width="60sp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:paddingRight="11.2dip"
+                    android:paddingBottom="3.7dip"
+                    android:paddingTop="3.7dip"
+                    android:src="@drawable/move" />
+                <View
+                    android:layout_width="3.7dp"
+                    android:layout_height="match_parent"
+                    android:background="#BBBBBB" />
 
             </LinearLayout>
 
