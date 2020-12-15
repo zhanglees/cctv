@@ -116,7 +116,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:orientation="horizontal" >
-                            <RadioButton
+                            <!--<RadioButton
                                 android:id="@+id/baud_car1"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
@@ -235,7 +235,7 @@
                                 android:checked="true"
                                 android:padding="3.7sp"
                                 android:textSize="12sp"
-                                />
+                                />-->
 
                         </com.cctv.widget.FlowRadioGroup>
                     </LinearLayout>

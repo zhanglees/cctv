@@ -22,7 +22,7 @@
                 android:background="#0bbbf7"/>
             <TextView
                 android:id="@+id/tab_taskum"
-                android:layout_width="320sp"
+                android:layout_width="300sp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18sp"
                 android:layout_marginTop="7.5sp"
@@ -51,7 +51,7 @@
                 android:textSize="18sp" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="400sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:layout_gravity="center_vertical"
